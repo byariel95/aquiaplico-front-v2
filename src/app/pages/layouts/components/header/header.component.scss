@@ -1,11 +1,22 @@
+.header_account{
+  display: flex;
+  align-items: center;
+  border-left: solid 1.5px white;
 
-.spacer-toolbar {
-    flex: 1 1 auto;
+}
+.header_icons{
+  margin-right: 3px;
+  width: 175px;
+  button{
+    margin: 5%;
   }
+}
 
 .mat-toolbar {
       background: #353ABC;
       color: white;
+      display: flex;
+      justify-content: flex-end;
   }
 
 .mat-buttom-custom{

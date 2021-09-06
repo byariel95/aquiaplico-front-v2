@@ -8,21 +8,32 @@ import { HeaderComponent } from './pages/layouts/components/header/header.compon
 import { SidebarComponent } from './pages/layouts/components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { PerfectScrollbarConfigInterface, PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { BusinessModule } from './pages/modules/business/business.module';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {suppressScrollX: true}
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
     HeaderComponent,
-    SidebarComponent
+    AdminLayoutComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PerfectScrollbarModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+
+    //Modules
+    BusinessModule
   ],
-  providers: [],
+  providers: [
+    {provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

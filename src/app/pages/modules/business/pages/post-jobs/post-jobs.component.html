@@ -1,0 +1,29 @@
+<!-- banner -->
+<div class="banner">
+    <div class="container_text">
+        <h2 class="title" *ngIf="!title">Crear Nuevo Empleo</h2>
+        <h2 class="title" *ngIf="title">{{title}}</h2>
+        <p>Ingresa toda la información relevante acerca  del empleo para conseguir los mejores candidatos</p>
+    </div>
+    <div class="container_button">
+        <button mat-stroked-button>Vista Previa</button>
+    </div>
+</div>
+<!-- banner -->
+
+<!-- card -->
+<div class="main">
+    <mat-card class="card">
+        <h2>Información básica</h2>
+    </mat-card>
+    <div class="container">
+        <button mat-flat-button class="btn_continue">Guardar y Continuar</button>
+        <button mat-stroked-button class="btn_save">Guardar Borrador</button>
+        <h2>Tips</h2>
+        <p>Utiliza titulos de empleo comunes para mejorar la búsqueda de candidatos potenciales</p>
+        <p>Usa una locación específica para atraer perfiles mas exactos</p>
+
+    </div>
+</div>
+
+<!-- card -->

@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'business',loadChildren: () => import('./pages/modules/business/business.module').then(m =>m.BusinessModule)
+      }
+    ]
   }
 ];
 
