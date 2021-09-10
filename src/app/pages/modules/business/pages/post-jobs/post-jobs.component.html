@@ -1,29 +1,175 @@
 <!-- banner -->
 <div class="banner">
-    <div class="container_text">
-        <h2 class="title" *ngIf="!title">Crear Nuevo Empleo</h2>
-        <h2 class="title" *ngIf="title">{{title}}</h2>
-        <p>Ingresa toda la información relevante acerca  del empleo para conseguir los mejores candidatos</p>
-    </div>
-    <div class="container_button">
-        <button mat-stroked-button>Vista Previa</button>
-    </div>
+  <div class="container_text">
+    <h2 class="title" *ngIf="mainTitle">{{mainTitle.value}}</h2>
+    <h2 class="title" *ngIf="!mainTitle">Crear Nuevo Empleo</h2>
+    <p>Ingresa toda la información relevante acerca del empleo para conseguir los mejores candidatos</p>
+  </div>
+  <div class="container_button">
+    <button mat-stroked-button>Vista Previa</button>
+  </div>
 </div>
 <!-- banner -->
 
 <!-- card -->
 <div class="main">
-    <mat-card class="card">
-        <h2>Información básica</h2>
-    </mat-card>
-    <div class="container">
-        <button mat-flat-button class="btn_continue">Guardar y Continuar</button>
-        <button mat-stroked-button class="btn_save">Guardar Borrador</button>
-        <h2>Tips</h2>
-        <p>Utiliza titulos de empleo comunes para mejorar la búsqueda de candidatos potenciales</p>
-        <p>Usa una locación específica para atraer perfiles mas exactos</p>
+  <mat-card class="card"> 
+    <perfect-scrollbar>
+        <form [formGroup]='createJobsForm'>
+          <mat-card-title>Información básica</mat-card-title>
+          <mat-card-content>
+            <label class="card-subtitle" for="title">Título del Empleo:*</label>
+            <input class="card-input" formControlName="title" type="text" name="" id="title"
+              placeholder="Ingresa título del empleo">
+            <label class="card-subtitle" for="title">Industria:*</label>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Selecciona una industria" formControlName='industries'>
+                <mat-option *ngFor="let industry of industries" [value]="industry.industry">{{industry.industry}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <label class="card-subtitle" for="title">Departamento:*</label>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Selecciona un Departamento" formControlName='jobPosition' >
+                <mat-option *ngFor="let jobPosition of jobsPositions" [value]="jobPosition.jobPosition">
+                  {{jobPosition.jobPosition}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-card-content>
 
-    </div>
+          <mat-card-title>Locación</mat-card-title>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Oficina:*</label>
+            <span>Elige en que ciudad esta ubicada la oficina de este empleo.</span>
+            <input class="card-input" type="text" name="" id="city" formControlName="location"  placeholder="Ciudad de Guatemala">
+            <div class="check-container">
+              <mat-checkbox color="primary" formControlName="remote" class="checkboxes" value="before">Remoto</mat-checkbox>
+            </div>
+          </mat-card-content>
+
+          <mat-divider [inset]="true"></mat-divider>
+          <br />
+    
+          <mat-card-title>Descripción </mat-card-title><span class="subtitle"> *Especifique en viñetas cada requisito de
+            trabajo, use la herramienta de formato.</span>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Describa las responsabilidades y funciones que tendrá el candidato en
+              este
+              puesto</label>
+            <angular-editor id='editorDescription' [placeholder]="'Describe brevemente el empleo'" [config]="editorConfig"
+            formControlName="description"></angular-editor>
+          </mat-card-content>
+
+          <mat-card-title>Requerimientos </mat-card-title>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Describa los requerimientos y habilidades específicas para desarrollar este puesto.</label>
+            <angular-editor id='editorRequirements' [placeholder]="'Describe brevemente el empleo'" [config]="editorConfig"
+            formControlName="requirements"></angular-editor>
+          </mat-card-content>
+
+          <mat-card-title>Beneficios </mat-card-title> <span class="subtitle"> *Especifique en viñetas cada beneficio
+            valioso de tu empresa</span>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Describa los requerimientos y habilidades específicas para desarrollar
+              este puesto.</label>
+            <angular-editor id='editorBenefits' [placeholder]="'Describe brevemente el empleo'" [config]="editorConfig"
+            formControlName="benefits"></angular-editor>
+          </mat-card-content>
+          <mat-divider [inset]="true"></mat-divider>
+
+          <mat-divider [inset]="true"></mat-divider>
+          <br />
+
+          <mat-card-title>Detalles de Empleo</mat-card-title>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Habilidades:</label>
+            <mat-form-field class="example-chip-list" appearance="outline">
+              <input type="text" placeholder="Agrega tus habilidades" #Abilities aria-label="text" matInput
+              formControlName="abilities" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill._id">
+                {{skill.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let skill of skills" [removable]="removable" (removed)="remove(skill)">
+                <label>{{skill}}</label>
+                <mat-icon matChipRemove *ngIf="removable">clear</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+            <br />
+
+            <div class="job-detail-container">
+              <label class="card-subtitle" for="city">Tipo de Contratacion:</label>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Seleccionar" formControlName='contractTypes'>
+                  <mat-option *ngFor="let contractType of contractTypes" [value]="contractType.type">{{contractType.type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <label class="card-subtitle" for="hiring">¿Cuántos empleados desea contratar?</label>
+              <input class="card-input" formControlName="hiring" type="text" name="" id="hiring">
+              <mat-checkbox color="primary" formControlName="recurrent" class="checkboxes" value="before">Recurrente</mat-checkbox>
+            </div>
+          </mat-card-content>
+          <mat-divider [inset]="true"></mat-divider>
+          <br />
+          
+          <mat-card-title>Compensación</mat-card-title>
+          <mat-card-content>
+            <label class="card-subtitle" for="city">Selecciona el salario para este empleo.</label>
+            <div class="salary-container">
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Seleccionar" formControlName='types'>
+                  <mat-option *ngFor="let type of types" [value]="type">
+                   {{type}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Seleccionar" formControlName='ranges'>
+                  <mat-option *ngFor="let range of ranges" [value]="range">
+                    {{range}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="currency-container">
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Seleccionar" formControlName='currencies'>
+                  <mat-option *ngFor="let currency of currencies" [value]="currency.currency">
+                    {{currency.currency}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline" floatLabel="always">
+                <input matInput type="number" class="example-right-align" formControlName="minSalary" placeholder="0">
+                <label matPrefix>$&nbsp;</label>
+                <span matSuffix>min</span>
+              </mat-form-field>
+              
+              <mat-form-field class="formField" appearance="outline" floatLabel="always">
+                <input matInput type="number" class="example-right-align" formControlName="maxSalary" placeholder="0">
+                <label class="prefix" matPrefix>$&nbsp;</label>
+                <span matSuffix>max</span>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <br />
+        </form>
+    </perfect-scrollbar>
+  </mat-card>
+
+  <div class="container">
+    <button (click)="savePostJob(true)" mat-flat-button class="btn_continue">Guardar y Continuar</button>
+    <button (click)="savePostJob(false)" mat-stroked-button class="btn_save">Guardar Borrador</button>
+    <h2>Tips</h2>
+    <p>Utiliza titulos de empleo comunes para mejorar la búsqueda de candidatos potenciales</p>
+    <p>Usa una locación específica para atraer perfiles mas exactos</p>
+  </div>
+  
 </div>
-
 <!-- card -->

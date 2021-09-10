@@ -20,8 +20,11 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@kolkov/angular-editor": "^1.2.0",
+    "@sweetalert2/theme-material-ui": "^5.0.4",
     "ngx-perfect-scrollbar": "^10.1.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.1.5",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

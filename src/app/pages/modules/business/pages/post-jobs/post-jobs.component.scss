@@ -1,8 +1,8 @@
+
 .banner {
 width: 100%;
 height: 100px;
 background: #EDEEFE;
-// padding: 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -45,13 +45,14 @@ justify-content: space-between;
     display: flex;
     flex-direction: row;
     margin-top: 2%;
+    margin-bottom: 3%;
     .container{
         display: flex;
         flex-direction: column;
         width: 25%;
         margin-left: 4%;
         button{
-            width:75% ;
+            width:50% ;
             padding: 8px 10px 8px 10px;
             border-radius: 10px;
             margin-bottom: 6%;
@@ -91,4 +92,157 @@ justify-content: space-between;
     margin-left: 10%;
     border: solid 1px #9FB1FF;
     padding: 30px;
+    box-shadow: none;
+    height: 70vh;
+    .mat-card-title{
+        display: inline;
+        color: #353ABC;
+        font-family: 'Mulish', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.3px;
+    }
+    .subtitle{
+        color: #353ABC;
+            font-family: 'Mulish', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 150%;
+    }
+    .mat-card-content{
+        padding: 2% 5% 2% 5%;
+
+        .check-container{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .card-subtitle{
+            font-family: 'Mulish', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+        }
+        span{
+            display: block;
+            color: #353ABC;
+            font-family: 'Mulish', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 150%;
+
+        }
+        .card-input{
+            width: 96%;
+            display: block;
+            padding: 15px;
+            border-radius: 3px;
+            border: solid 1px #C1C3CE;
+            color: #353ABC; 
+            font-family: 'Mulish', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            margin-bottom: 3%;
+            &:focus{
+                outline: none;
+                border-color: #9FB1FF ;
+            }
+            &::placeholder{
+                font-family: 'Mulish', sans-serif;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 150%;
+                color: #9FA2B4;
+            }
+        }
+    }
 }
+
+.mat-form-field {
+    display: block;
+}
+.mat-select{
+    border-radius: 3px;
+    color: #353ABC; 
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    &:focus{
+        outline: none;
+        border-color: #9FB1FF ;
+    }
+}
+
+
+.card-select {
+    display: block;
+}
+
+.mat-chip {
+    background: white;
+    border: solid 2px #353ABC;
+    color: #353ABC;
+    border-radius: 5px;
+}
+.job-detail-container {
+    width: 40%;
+}
+.salary-container{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+.currency-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between ;
+    align-items: flex-start;
+     .currency-input{
+         padding: 15px;
+        border-radius: 3px;
+        border: solid 1px #C1C3CE;
+        color: #353ABC; 
+        font-family: 'Mulish', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        &:focus{
+            outline: none;
+            border-color: #9FB1FF ;
+        }
+        &::placeholder{
+            font-family: 'Mulish', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 150%;
+            color: #9FA2B4;
+        }
+     }
+}  
+.prefix{
+    color: #353ABC; 
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
