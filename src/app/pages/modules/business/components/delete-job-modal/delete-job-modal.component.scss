@@ -1,0 +1,20 @@
+.mat-dialog-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+        font-family: 'Mulish', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 150%;  
+
+    }
+    .mat-icon{
+        color: #FE4545;
+    }
+}
+.mat-dialog-actions{
+    display: flex;
+    justify-content: center;
+}

@@ -12,10 +12,12 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 const matModule = [
   MatChipsModule,
+  MatDialogModule,
   MatCardModule,
   MatSidenavModule,
   MatListModule,
@@ -30,7 +32,6 @@ const matModule = [
   MatFormFieldModule,
 ]
 @NgModule({
-  declarations: [],
   imports: [
     [...matModule]
 

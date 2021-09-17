@@ -24,6 +24,8 @@ import {
 } from 'src/app/core/models/post-job.model';
 import { JobService } from 'src/app/core/services/job.service';
 import Swal from 'sweetalert2';
+import {MatDialog} from '@angular/material/dialog';
+import { DeleteJobModalComponent } from '../../components/delete-job-modal/delete-job-modal.component';
 
 
 @Component({
@@ -148,6 +150,7 @@ export class PostJobsComponent implements OnInit {
     private readonly contactTypesService: ContractTypesService,
     private readonly currencyService: CurrencyService,
     private jobService: JobService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -328,5 +331,8 @@ export class PostJobsComponent implements OnInit {
     } else {
       // service save as a markdown
     }
+  }
+  openDeleteJob() {
+    this.dialog.open( DeleteJobModalComponent);
   }
 }

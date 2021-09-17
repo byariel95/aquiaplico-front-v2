@@ -7,12 +7,14 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { PerfectScrollbarConfigInterface, PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { DeleteJobModalComponent } from './components/delete-job-modal/delete-job-modal.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {suppressScrollX: true}
 
 @NgModule({
   declarations: [
-    PostJobsComponent
+    PostJobsComponent,
+    DeleteJobModalComponent
   ],
   imports: [
     CommonModule,
